@@ -69,6 +69,7 @@ namespace Tasks
                 return false;
             }
             Stack<char> stack = new Stack<char>();
+            Stack<char> stackBad = new Stack<char>();
 
             //словарь не нужен
             Dictionary<char, char> keyValuePairs = new Dictionary<char, char>()
@@ -90,19 +91,22 @@ namespace Tasks
                     )
                 {
                     stack.Pop();
-                    if (stack.Count == 0)
-                    {
-                        return true;
-                    }
                 }
                 else
                 {
                     return false;
                 }
+
+                
                 
             }
 
-            return true;
+            if (stack.Count == 0)
+            {
+                return true;
+            }
+
+            return false;
         }
 
 

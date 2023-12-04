@@ -36,13 +36,19 @@ namespace Unit_Tests
         public void TestMethod5()
         {
             bool result = Program.IsValid2("[({})](]");
-            Assert.AreEqual(false, result); ;
+            Assert.AreEqual(false, result);
         }
         [TestMethod]
         public void TestMethod6()
         {
             bool result = Program.IsValid2("[()()]");
-            Assert.AreEqual(true, result); ;
+            Assert.AreEqual(true, result);
+        }
+        [TestMethod]
+        public void TestMethod7()
+        {
+            bool result = Program.IsValid2("[({})]]");
+            Assert.AreEqual(false, result);
         }
     }
 }
