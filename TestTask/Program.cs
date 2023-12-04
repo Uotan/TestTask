@@ -17,7 +17,34 @@ namespace Tasks
             Console.ReadKey();
         }
 
+        public static string EncodingWithParentheses(string data)
+        {
+            if (String.IsNullOrEmpty(data))
+            {
+                return null;
+            }
+            data = data.ToLower();
+            string result = "";
+            List<char> list = new List<char>();
+            foreach (char c in data)
+            {
+                list.Add(c);
+            }
+            foreach (char c in data) 
+            {
+                var count = list.Count(x => x == c);
+                if (count>1)
+                {
+                    result += ")";
+                }
+                else
+                {
+                    result += "(";
+                }
+            }
 
+            return result;
+        }
 
         /// <summary>
         /// Задание 3, проверка валидности скобок
@@ -62,6 +89,12 @@ namespace Tasks
             return stack.Count == 0;
         }
 
+
+        /// <summary>
+        /// Задание 3, проверка валидности скобок (второй вариант решения)
+        /// </summary>
+        /// <param name="braces"></param>
+        /// <returns></returns>
         public static bool IsValid2(string braces)
         {
             if (String.IsNullOrEmpty(braces))
