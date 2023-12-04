@@ -69,8 +69,6 @@ namespace Tasks
                 return false;
             }
             Stack<char> stack = new Stack<char>();
-            Stack<char> stackBad = new Stack<char>();
-
             //словарь не нужен
             Dictionary<char, char> keyValuePairs = new Dictionary<char, char>()
             {
@@ -84,28 +82,24 @@ namespace Tasks
                 {
                     stack.Push((char)brace);
                 }
-                else if(
-                    (brace == ')' && stack.ElementAt(0)=='(')||
-                    (brace == '}' && stack.ElementAt(0) == '{') ||
-                    (brace == ']' && stack.ElementAt(0) == '[')
-                    )
+                else if(stack.Count!=0)
                 {
-                    stack.Pop();
+                    if ((brace == ')' && stack.ElementAt(0) == '(') ||
+                    (brace == '}' && stack.ElementAt(0) == '{') ||
+                    (brace == ']' && stack.ElementAt(0) == '['))
+                    {
+                        stack.Pop();
+                    }
                 }
                 else
                 {
                     return false;
                 }
-
-                
-                
             }
-
             if (stack.Count == 0)
             {
                 return true;
             }
-
             return false;
         }
 
