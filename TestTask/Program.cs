@@ -12,11 +12,16 @@ namespace Tasks
 
         static void Main(string[] args)
         {
-            var result = IsValid2("([{}])");
+            var result = IsValid("([{}])");
             Console.WriteLine(result);
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Задача 1 - кодирование скобками
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static string EncodingWithParentheses(string data)
         {
             if (String.IsNullOrEmpty(data))
@@ -52,50 +57,6 @@ namespace Tasks
         /// <param name="braces"></param>
         /// <returns></returns>
         public static bool IsValid(string braces)
-        {
-            if (string.IsNullOrEmpty(braces))
-            {
-                return false;
-            }
-
-
-            Dictionary<char, char> keyValuePairs = new Dictionary<char, char>()
-            {
-                {'{', '}' },
-                {'(', ')' },
-                {'[', ']' },
-            };
-
-            Stack<char> stack = new Stack<char>();
-            foreach (char brace in braces)
-            {
-                if (keyValuePairs.ContainsKey(brace))
-                {
-                    stack.Push(brace);
-                }
-                else if (!keyValuePairs.ContainsValue(brace))
-                {
-                    continue;
-                }
-                else if (stack.Count == 0)
-                {
-                    return false;
-                }
-                else if (keyValuePairs[stack.Pop()] != brace)
-                {
-                    return false;
-                }
-            }
-            return stack.Count == 0;
-        }
-
-
-        /// <summary>
-        /// Задание 3, проверка валидности скобок (второй вариант решения)
-        /// </summary>
-        /// <param name="braces"></param>
-        /// <returns></returns>
-        public static bool IsValid2(string braces)
         {
             if (String.IsNullOrEmpty(braces))
             {
